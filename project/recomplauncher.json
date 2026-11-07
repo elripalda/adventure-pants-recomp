@@ -1,0 +1,277 @@
+{
+  "$schema": "https://recomplauncher.com/schema/recomplauncher.json",
+  "format": 1,
+  "name": "Adventure Pants Recomp",
+  "repo": "elripalda/adventure-pants-recomp",
+  "game": {
+    "kind": "iso_or_folder",
+    "label": "Your copy of The Fancy Pants Adventures for Xbox Live Arcade: the package file, or the folder that holds 58410A9F.",
+    "check": {
+      "file": "58410A9F/000D0000/6BD7BB6917CE7BC0B816C280ACFD9BD78471228258"
+    }
+  },
+  "prepare": {
+    "program": [
+      "AdventurePantsRecomp.exe"
+    ],
+    "args": [
+      "--prepare",
+      "--game",
+      "{game}"
+    ],
+    "label": "Unpacking your game package",
+    "timeout": 600
+  },
+  "start": {
+    "program": [
+      "AdventurePantsRecomp.exe"
+    ],
+    "args": [
+      "--game",
+      "{game}"
+    ]
+  },
+  "config": [
+    {
+      "id": "main",
+      "format": "toml",
+      "file": [
+        {
+          "path": "{install}/AdventurePantsRecomp.toml"
+        }
+      ],
+      "ensure": {
+        "gpu_plugin": "\"xenos\""
+      },
+      "new": {
+        "resolution_scale": "2",
+        "anisotropic_override": "5",
+        "vsync": "true"
+      }
+    }
+  ],
+  "saves": [
+    "{documents}/AdventurePantsRecomp"
+  ],
+  "folders": {
+    "saves": [
+      {
+        "path": "{documents}/AdventurePantsRecomp"
+      }
+    ],
+    "logs": [
+      {
+        "path": "{install}/logs"
+      }
+    ],
+    "app": [
+      {
+        "path": "{install}"
+      }
+    ]
+  },
+  "exit_codes": {
+    "2": "That isn't your copy of The Fancy Pants Adventures. Pick its Xbox Live Arcade package, or the folder that holds 58410A9F.",
+    "3": "Your game package couldn't be unpacked. It may be incomplete, or the drive may be full."
+  },
+  "settings": [
+    {
+      "id": "window",
+      "label": "Window",
+      "help": "Fullscreen fills your screen. Windowed opens the game in a window. Escape switches between them while you play.",
+      "choices": [
+        {
+          "label": "Fullscreen",
+          "set": {
+            "fullscreen": "true"
+          }
+        },
+        {
+          "label": "Windowed",
+          "set": {
+            "fullscreen": "false"
+          }
+        }
+      ],
+      "defaults": {
+        "fullscreen": "true"
+      }
+    },
+    {
+      "id": "resolution",
+      "label": "Resolution",
+      "help": "What the game draws at. 720p is the console's own. 1440p is sharp on a 1080p screen. 4K needs a faster graphics card.",
+      "choices": [
+        {
+          "label": "720p",
+          "set": {
+            "resolution_scale": "1"
+          }
+        },
+        {
+          "label": "1440p",
+          "set": {
+            "resolution_scale": "2"
+          }
+        },
+        {
+          "label": "4K",
+          "set": {
+            "resolution_scale": "3"
+          }
+        }
+      ],
+      "defaults": {
+        "resolution_scale": "1"
+      }
+    },
+    {
+      "id": "antialiasing",
+      "label": "Anti-aliasing",
+      "help": "Smooths jagged edges on the outlines. FXAA is light; Extreme smooths more and softens the picture a little.",
+      "choices": [
+        {
+          "label": "Off",
+          "set": {
+            "swap_post_effect": "\"none\""
+          }
+        },
+        {
+          "label": "FXAA",
+          "set": {
+            "swap_post_effect": "\"fxaa\""
+          }
+        },
+        {
+          "label": "FXAA Extreme",
+          "set": {
+            "swap_post_effect": "\"fxaa_extreme\""
+          }
+        }
+      ],
+      "defaults": {
+        "swap_post_effect": "\"none\""
+      }
+    },
+    {
+      "id": "filtering",
+      "label": "Texture filtering",
+      "help": "Keeps textures sharp at shallow angles. Costs next to nothing.",
+      "choices": [
+        {
+          "label": "Game's own",
+          "set": {
+            "anisotropic_override": "-1"
+          }
+        },
+        {
+          "label": "2x",
+          "set": {
+            "anisotropic_override": "2"
+          }
+        },
+        {
+          "label": "4x",
+          "set": {
+            "anisotropic_override": "3"
+          }
+        },
+        {
+          "label": "8x",
+          "set": {
+            "anisotropic_override": "4"
+          }
+        },
+        {
+          "label": "16x",
+          "set": {
+            "anisotropic_override": "5"
+          }
+        }
+      ],
+      "defaults": {
+        "anisotropic_override": "3"
+      }
+    },
+    {
+      "id": "vsync",
+      "label": "V-Sync",
+      "help": "Waits for your screen's refresh, so there's no tearing. The game runs at 60 either way.",
+      "choices": [
+        {
+          "label": "On",
+          "set": {
+            "vsync": "true"
+          }
+        },
+        {
+          "label": "Off",
+          "set": {
+            "vsync": "false"
+          }
+        }
+      ],
+      "defaults": {
+        "vsync": "true"
+      }
+    },
+    {
+      "id": "vrr",
+      "label": "Variable refresh",
+      "help": "Shows each frame the moment it's ready: smooth on G-Sync and FreeSync screens.",
+      "choices": [
+        {
+          "label": "On",
+          "set": {
+            "d3d12_allow_variable_refresh_rate_and_tearing": "true"
+          }
+        },
+        {
+          "label": "Off",
+          "set": {
+            "d3d12_allow_variable_refresh_rate_and_tearing": "false"
+          }
+        }
+      ],
+      "defaults": {
+        "d3d12_allow_variable_refresh_rate_and_tearing": "true"
+      }
+    },
+    {
+      "id": "fps",
+      "label": "Show FPS",
+      "help": "The frame rate in the top left corner of the game.",
+      "choices": [
+        {
+          "label": "Off",
+          "set": {
+            "show_fps": "false"
+          }
+        },
+        {
+          "label": "On",
+          "set": {
+            "show_fps": "true"
+          }
+        }
+      ],
+      "defaults": {
+        "show_fps": "false"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "id": "saves",
+      "label": "Saves",
+      "help": "Your game saves.",
+      "open": "saves"
+    },
+    {
+      "id": "cache",
+      "label": "Shader cache",
+      "help": "Shaders the game has built. Clearing only helps if graphics look wrong after an update.",
+      "clear": "app/cache"
+    }
+  ]
+}

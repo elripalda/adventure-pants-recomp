@@ -1,0 +1,19 @@
+# Adventure Pants Recomp settings
+
+# Graphics renderer (don't change)
+gpu_plugin = "xenos"
+
+# Internal resolution. The game renders at 720p; 3 = 2160p (4K), 2 = 1440p, 1 = original.
+resolution_scale = 3
+
+fullscreen = true
+vsync = true
+
+# 16x texture filtering
+anisotropic_override = 5
+
+# Anti-aliasing: "none", "fxaa" or "fxaa_extreme"
+swap_post_effect = "none"
+
+# Frame counter in the top-left corner. F3 opens the full debug overlay.
+show_fps = false

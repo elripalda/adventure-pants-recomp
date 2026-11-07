@@ -1,0 +1,9 @@
+# Generated from the game's code, built on your own machine
+project/generated/default/
+project/input/
+project/out/
+# Your unpacked game, settings and builds
+AdventurePantsRecomp/
+release/
+logs/
+*.log
